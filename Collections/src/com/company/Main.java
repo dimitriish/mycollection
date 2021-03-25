@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 
@@ -12,7 +13,7 @@ public class Main {
         myCollection.add(2);
         myCollection.add(3);
         myCollection.add(4);
-        myCollection.add(5);
+        myCollection.add(null);
         myCollection.add(6);
         myCollection.add(7);
 //
@@ -33,9 +34,12 @@ public class Main {
 //        System.out.println();*/
 //
         ArrayList<Integer> l = new ArrayList<>();
-        l.add(4);
+        l.add(2131);
+        l.add(212312);
+        l.add(3123213);
+        /*l.add(4);
         l.add(3);
-        l.add(2);
+        l.add(2);*/
 //
         Iterator<Integer> iterator = myCollection.iterator();
         while (iterator.hasNext()) {
@@ -44,7 +48,7 @@ public class Main {
         System.out.println();
 //
 //        myCollection.clear();
-          System.out.println(myCollection.retainAll(l));
+        System.out.println(myCollection.retainAll(l));
 //
         iterator = myCollection.iterator();
         while (iterator.hasNext()) {

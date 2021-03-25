@@ -53,10 +53,19 @@ public class MyCollection<E> implements Collection<E> {
     @Override
     public boolean contains(final Object o) {
         boolean result = false;
+
+
         for (int i = 0; i < size; i++) {
-            if (o.equals(elementData[i])) {
-                result = true;
-                break;
+            if (o != null) {
+                if (o.equals(elementData[i])) {
+                    result = true;
+                    break;
+                }
+            } else {
+                if (elementData[i] == null) {
+                    result = true;
+                    break;
+                }
             }
         }
         return result;
@@ -93,11 +102,20 @@ public class MyCollection<E> implements Collection<E> {
     public boolean remove(final Object o) {
         boolean result = false;
         for (int i = 0; i < size; i++) {
-            if (elementData[i].equals(o)) {
-                result = true;
-                System.arraycopy(elementData, i + 1, elementData, i, size - i - 1);
-                size--;
-                break;
+            if (o != null) {
+                if (o.equals(elementData[i])) {
+                    result = true;
+                    System.arraycopy(elementData, i + 1, elementData, i, size - i - 1);
+                    size--;
+                    break;
+                }
+            } else {
+                if (elementData[i] == null) {
+                    result = true;
+                    System.arraycopy(elementData, i + 1, elementData, i, size - i - 1);
+                    size--;
+                    break;
+                }
             }
         }
         return result;
@@ -152,10 +170,17 @@ public class MyCollection<E> implements Collection<E> {
         for (int i = 0; i < size; i++) {
             boolean isThere = false;
             for (Object o : c) {
-                if (o.equals(elementData[i])) {
-                    isThere = true;                 //не использую c.contains,
-                    break;
-                }                                   //потому что запрещено использовать готовые реализации
+                if (o != null) {
+                    if (o.equals(elementData[i])) {
+                        isThere = true;                 //не использую c.contains,
+                        break;
+                    }                                   //потому что запрещено использовать готовые реализации
+                } else {
+                    if (elementData[i] == null) {
+                        isThere = true;
+                        break;
+                    }
+                }
             }
             if (!isThere) {
                 remove(elementData[i]);
